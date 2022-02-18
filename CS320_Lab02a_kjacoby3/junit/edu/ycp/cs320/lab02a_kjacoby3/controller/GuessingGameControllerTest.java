@@ -1,4 +1,4 @@
-package edu.ycp.cs320.lab02.controller;
+package edu.ycp.cs320.lab02a_kjacoby3.controller;
 
 import static org.junit.Assert.assertTrue;
 

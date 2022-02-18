@@ -1,4 +1,4 @@
-package edu.ycp.cs320.lab02.model;
+package edu.ycp.cs320.lab02a_kjacoby3.model;
 
 import static org.junit.Assert.*;
 
