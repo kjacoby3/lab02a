@@ -1,4 +1,4 @@
-package edu.ycp.cs320.lab02a.servlet.ajax;
+package edu.ycp.cs320.lab02a_kjacoby3.servlet.ajax;
 
 import java.io.IOException;
 
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ycp.cs320.lab02a.controller.GuessingGameController;
-import edu.ycp.cs320.lab02a.model.GuessingGame;
+import edu.ycp.cs320.lab02a_kjacoby3.controller.GuessingGameController;
+import edu.ycp.cs320.lab02a_kjacoby3.model.GuessingGame;
 
 public class NextGuessAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

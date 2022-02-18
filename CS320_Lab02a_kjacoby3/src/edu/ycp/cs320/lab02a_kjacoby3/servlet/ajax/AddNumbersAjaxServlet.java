@@ -1,4 +1,4 @@
-package edu.ycp.cs320.lab02a.servlet.ajax;
+package edu.ycp.cs320.lab02a_kjacoby3.servlet.ajax;
 
 import java.io.IOException;
 
@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ycp.cs320.lab02a.controller.NumbersController;
+import edu.ycp.cs320.lab02a_kjacoby3.controller.NumbersController;
+import edu.ycp.cs320.lab02a_kjacoby3.model.Numbers;
 
 public class AddNumbersAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,9 +37,14 @@ public class AddNumbersAjaxServlet extends HttpServlet {
 			return;
 		}
 		
+		Numbers model = new Numbers();
+		model.setFirst(first);
+		model.setSecond(second);
+		model.setThird(third);
+		
 		// Use a controller to process the request
 		NumbersController controller = new NumbersController();
-		Double result = controller.add(first, second, third);
+		Double result = controller.add();
 		
 		// Send back a response
 		resp.setContentType("text/plain");

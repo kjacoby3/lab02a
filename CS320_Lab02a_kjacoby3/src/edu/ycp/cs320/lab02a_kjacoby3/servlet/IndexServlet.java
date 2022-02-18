@@ -1,4 +1,4 @@
-package edu.ycp.cs320.lab02a.servlet;
+package edu.ycp.cs320.lab02a_kjacoby3.servlet;
 
 import java.io.IOException;
 

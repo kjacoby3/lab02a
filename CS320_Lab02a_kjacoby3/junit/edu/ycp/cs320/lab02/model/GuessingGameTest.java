@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ycp.cs320.lab02a.model.GuessingGame;
+import edu.ycp.cs320.lab02a_kjacoby3.model.GuessingGame;
 
 public class GuessingGameTest {
 	private GuessingGame model;

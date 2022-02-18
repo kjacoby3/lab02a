@@ -1,4 +1,4 @@
-package edu.ycp.cs320.lab02a.servlet;
+package edu.ycp.cs320.lab02a_kjacoby3.servlet;
 
 import java.io.IOException;
 
@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ycp.cs320.lab02a.controller.NumbersController;
+import edu.ycp.cs320.lab02a_kjacoby3.controller.NumbersController;
+import edu.ycp.cs320.lab02a_kjacoby3.model.Numbers;
 
 public class AddNumbersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +29,11 @@ public class AddNumbersServlet extends HttpServlet {
 		
 		System.out.println("AddNumbers Servlet: doPost");
 		
-
+		Numbers model = new Numbers();
+		
+		NumbersController controller = new NumbersController();
+		
+		controller.setModel(model);
 		// holds the error message text, if there is any
 		String errorMessage = null;
 
@@ -45,13 +50,17 @@ public class AddNumbersServlet extends HttpServlet {
 			if (first == null || second == null || third == null) {
 				errorMessage = "Please specify three numbers";
 			}
+			
 			// otherwise, data is good, do the calculation
 			// must create the controller each time, since it doesn't persist between POSTs
 			// the view does not alter data, only controller methods should be used for that
 			// thus, always call a controller method to operate on the data
 			else {
-				NumbersController controller = new NumbersController();
-				result = controller.add(first, second, third);
+				model.setFirst(first);
+				model.setSecond(second);
+				model.setThird(third);
+				//NumbersController controller = new NumbersController();
+				result = controller.add();
 			}
 		} catch (NumberFormatException e) {
 			errorMessage = "Invalid double";

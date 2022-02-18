@@ -1,4 +1,4 @@
-package edu.ycp.cs320.lab02a.main;
+package edu.ycp.cs320.lab02a_kjacoby3.main;
 
 import java.lang.management.ManagementFactory;
 

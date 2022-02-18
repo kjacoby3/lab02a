@@ -1,4 +1,4 @@
-package edu.ycp.cs320.lab02a.servlet;
+package edu.ycp.cs320.lab02a_kjacoby3.servlet;
 
 import java.io.IOException;
 
@@ -7,7 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.ycp.cs320.lab02a.controller.NumbersController;
+import edu.ycp.cs320.lab02a_kjacoby3.controller.NumbersController;
+import edu.ycp.cs320.lab02a_kjacoby3.model.Numbers;
 
 public class MultiplyNumbersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +29,11 @@ public class MultiplyNumbersServlet extends HttpServlet {
 		
 		System.out.println("MultiplyNumbers Servlet: doPost");
 		
-
+		Numbers model = new Numbers();
+		
+		NumbersController controller = new NumbersController();
+		
+		controller.setModel(model);
 		// holds the error message text, if there is any
 		String errorMessage = null;
 
@@ -39,18 +44,21 @@ public class MultiplyNumbersServlet extends HttpServlet {
 		try {
 			Double first = getDoubleFromParameter(req.getParameter("first"));
 			Double second = getDoubleFromParameter(req.getParameter("second"));
-
+			
 			// check for errors in the form data before using is in a calculation
 			if (first == null || second == null) {
 				errorMessage = "Please specify two numbers";
 			}
+			
 			// otherwise, data is good, do the calculation
 			// must create the controller each time, since it doesn't persist between POSTs
 			// the view does not alter data, only controller methods should be used for that
 			// thus, always call a controller method to operate on the data
 			else {
-				NumbersController controller = new NumbersController();
-				result = controller.multiply(first, second);
+				model.setFirst(first);
+				model.setSecond(second);
+				//NumbersController controller = new NumbersController();
+				result = controller.multiply();
 			}
 		} catch (NumberFormatException e) {
 			errorMessage = "Invalid double";
